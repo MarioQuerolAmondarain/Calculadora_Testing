@@ -34,6 +34,7 @@ export class CalculadoraComponent implements OnInit {
     }else{
       this.resultado = 0;
     }
+    this.resultado = Math.round(this.resultado* 1000) / 1000;
 
     return false;
   }
