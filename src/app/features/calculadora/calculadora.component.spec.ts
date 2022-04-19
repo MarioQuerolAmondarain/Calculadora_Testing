@@ -113,8 +113,8 @@ describe('CalculadoraComponent', () => {
 
     component.valor1 = -3.232;
     component.valor2 = 4.2;
-    component.operacion = "dividir";
+    component.operacion = "multiplicar";
     component.calcular();
-    expect(component.resultado).toBeCloseTo(-0,77);
+    expect(component.resultado).toBe(-13.574);
   });
 });
