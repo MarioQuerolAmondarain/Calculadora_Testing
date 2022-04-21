@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-calculadora',
   templateUrl: './calculadora.component.html',
-  styleUrls: ['./calculadora.component.scss']
+  styleUrls: ['./calculadora.component.scss'],
 })
 export class CalculadoraComponent implements OnInit {
   operacion!: string;
@@ -12,30 +11,46 @@ export class CalculadoraComponent implements OnInit {
   valor1!: number;
   valor2!: number;
 
-  constructor() {
-   }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  calcular() {
+    if (this.operacion === '' || !this.operacion) {
+      throw new Error('Operación no seleccionada');
+    }
+
+    if (this.operacion === 'sumar') {
+      this.resultado = this.suma();
+    } else if (this.operacion === 'restar') {
+      this.resultado = this.resta();
+    } else if (this.operacion === 'multiplicar') {
+      this.resultado = this.multiplicacion();
+    } else if (this.operacion === 'dividir') {
+      this.resultado = this.division();
+    } else {
+      throw new Error('Operación no válida');
+    }
+
+    this.resultado = this.redondear();
   }
 
-  calcular(){
-    if(this.operacion === "sumar"){
-      this.resultado = this.valor1 + this.valor2;
-    }else if(this.operacion === "restar"){
-      this.resultado = this.valor1 - this.valor2;
-    }else if(this.operacion === "multiplicar"){
-      this.resultado = this.valor1 * this.valor2;
-    }else if(this.operacion === "dividir"){
-      if(this.valor2 == 0){
-        alert("División entre cero");
-        return false;
-      }
-      this.resultado = this.valor1 / this.valor2;
-    }else{
-      this.resultado = 0;
+  private suma(): number {
+    return this.valor1 + this.valor2;
+  }
+  private resta(): number {
+    return this.valor1 - this.valor2;
+  }
+  private multiplicacion(): number {
+    return this.valor1 * this.valor2;
+  }
+  private division(): number {
+    if (this.valor2 == 0) {
+      throw new Error('División entre cero');
     }
-    this.resultado = Math.round(this.resultado* 1000) / 1000;
-
-    return false;
+    return this.valor1 / this.valor2;
+  }
+  private redondear(): number {
+    return Math.round(this.resultado * 1000) / 1000;
   }
 }

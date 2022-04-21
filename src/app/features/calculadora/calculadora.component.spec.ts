@@ -13,89 +13,87 @@ describe('CalculadoraComponent', () => {
   });
 
   it('SUMA', () => {
+    component.operacion = "sumar";
     component.valor1 = -2;
     component.valor2 = 2;
-    component.operacion = "sumar";
     component.calcular();
     expect(component.resultado).toBe(0);
 
     component.valor1 = -2;
     component.valor2 = -2;
-    component.operacion = "sumar";
     component.calcular();
     expect(component.resultado).toBe(-4);
 
     component.valor1 = 2;
     component.valor2 = 2;
-    component.operacion = "sumar";
     component.calcular();
     expect(component.resultado).toBe(4);
   });
 
   it('RESTA', () => {
+    component.operacion = "restar";
     component.valor1 = 4;
     component.valor2 = 2;
-    component.operacion = "restar";
     component.calcular();
     expect(component.resultado).toBe(2);
 
     component.valor1 = -2;
     component.valor2 = -2;
-    component.operacion = "restar";
     component.calcular();
     expect(component.resultado).toBe(0);
 
     component.valor1 = -5;
     component.valor2 = 3;
-    component.operacion = "restar";
     component.calcular();
     expect(component.resultado).toBe(-8);
   });
 
   it('Multiplicar', () => {
+    component.operacion = "multiplicar";
     component.valor1 = 4;
     component.valor2 = 2;
-    component.operacion = "multiplicar";
     component.calcular();
     expect(component.resultado).toBe(8);
 
     component.valor1 = -4;
     component.valor2 = 2;
-    component.operacion = "multiplicar";
     component.calcular();
     expect(component.resultado).toBe(-8);
 
     component.valor1 = -4;
     component.valor2 = -2;
-    component.operacion = "multiplicar";
     component.calcular();
     expect(component.resultado).toBe(8);
   });
 
   it('Dividir',() => {
+    component.operacion = "dividir";
     component.valor1 = 16;
     component.valor2 = 4;
-    component.operacion = "dividir";
     component.calcular();
     expect(component.resultado).toBe(4);
 
     component.valor1 = -16;
     component.valor2 = 4;
-    component.operacion = "dividir";
     component.calcular();
     expect(component.resultado).toBe(-4);
 
     component.valor1 = 16;
     component.valor2 = -4;
-    component.operacion = "dividir";
     component.calcular();
     expect(component.resultado).toBe(-4);
 
     component.valor1 = -16;
     component.valor2 = -4;
-    component.operacion = "dividir";
     component.calcular();
     expect(component.resultado).toBe(4);
+
+    component.valor1 = -16;
+    component.valor2 = 0;
+    component.calcular();
+    expect(component.resultado).toBe(0);
+
+
   });
 
   it('Tres decimales',() => {
@@ -116,5 +114,12 @@ describe('CalculadoraComponent', () => {
     component.operacion = "multiplicar";
     component.calcular();
     expect(component.resultado).toBe(-13.574);
+  });
+
+  it('Inputs', () => {
+    component.valor1 = 32;
+    component.valor2 = 32;
+    component.operacion = "asfsafasdf";
+    expect(component.resultado).toBe(0);
   });
 });
