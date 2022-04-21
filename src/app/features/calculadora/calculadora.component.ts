@@ -27,12 +27,17 @@ export class CalculadoraComponent implements OnInit {
     } else if (this.operacion === 'multiplicar') {
       this.resultado = this.multiplicacion();
     } else if (this.operacion === 'dividir') {
-      this.resultado = this.division();
+      try{
+        this.resultado = this.division();
+      }catch(e){
+        alert("Error al realizar la división");
+      }
     } else {
       throw new Error('Operación no válida');
     }
 
     this.resultado = this.redondear();
+    return this.resultado;
   }
 
   private suma(): number {
